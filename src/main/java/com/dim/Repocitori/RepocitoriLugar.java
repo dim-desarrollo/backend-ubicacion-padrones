@@ -16,8 +16,6 @@ public interface RepocitoriLugar extends JpaRepository<Lugares, Long>{
 //        @Query(value = "SELECT * FROM lugares WHERE ST_DWithin(ST_GeographyFromText('POINT(?1 ?2)'), 100)", nativeQuery = true)
 //        Collection<Lugares> buscarLugaresPorLatitudLongitud(double latitud,double longitud );
 
-
-    @Query("SELECT l FROM Lugares l WHERE ST_DWithin(l.ubicacion, ST_GeographyFromText('POINT(' || ?1 || ' ' || ?2 || ')'), 100000)")
-    List<Lugares> findByDistance(float longitud, float latitud);
-
+    @Query(value = "SELECT * from obtener_lugares_cercanos(:longitud, :latitud)", nativeQuery = true)
+    List<Lugares> findByDistance(@Param("longitud") float longitud,@Param("latitud") float latitud);
 }

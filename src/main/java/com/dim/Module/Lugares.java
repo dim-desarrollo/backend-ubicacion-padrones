@@ -19,15 +19,16 @@ public class Lugares {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "id_lugar")
     private Long id;
-    @Column(name = "nombre")
+    @Column(name = "nombres")
     private String nombre;
 
 //    @Type(type = "org.hibernate.spatial.GeometryType")
-    @Column(name = "ubicacion", columnDefinition = "Geometry")
-    private Point ubicacion;
+    @Column(name = "ubicaciones", columnDefinition = "Geometry")
+    private String ubicacion;
 
+    @Column(name = "id_padrones")
     private Long id_padron;
 
     /*
