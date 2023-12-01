@@ -25,8 +25,11 @@ public class Lugares {
     private String nombre;
 
 //    @Type(type = "org.hibernate.spatial.GeometryType")
-    @Column(name = "ubicaciones", columnDefinition = "Geometry")
-    private String ubicacion;
+    @Column(name = "longitud")
+    private Long longitud;
+
+    @Column(name = "latitud")
+    private Long latitud;
 
     @Column(name = "id_padrones")
     private Long id_padron;
