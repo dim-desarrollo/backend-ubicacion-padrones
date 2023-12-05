@@ -173,8 +173,8 @@ agent any
 
         environment{
              PUERTO_INTERNO = 80
-             NOMBRE_CONTENEDOR = "backEnd-padron-ubicacion"
-             IDENTIFICADOR_IMAGEN = "backEnd-padron-ubicacion"
+             NOMBRE_CONTENEDOR = "backend-padron-ubicacion"
+             IDENTIFICADOR_IMAGEN = "backend-padron-ubicacion"
          }
           
         steps {
