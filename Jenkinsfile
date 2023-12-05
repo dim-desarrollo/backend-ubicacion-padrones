@@ -91,6 +91,8 @@ pipeline {
             }
         }
 
+        /* 
+
         stage('Git checkout') {
             steps{
 
@@ -99,7 +101,8 @@ pipeline {
                 }
             }
         }
-
+        */
+        
         stage('Build Maven') {
             steps {
                 dir("${CARPETA_APLICACION}"){
