@@ -41,7 +41,7 @@ pipeline {
     tools {
 
         maven "maven3.8.8"
-        jdk 'java17' //cambiar
+        jdk 'java20' //cambiar
         dockerTool 'docker-2'
     //    nodejs 'node-js'
     
