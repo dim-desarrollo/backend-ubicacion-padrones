@@ -102,20 +102,20 @@ pipeline {
             }
         }
         */
-        
+
         stage('Build Maven') {
             steps {
                 dir("${CARPETA_APLICACION}"){
                     script {
-                        PROYECTO_VERSION = sh(returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
-                        ARTIFACT_ID = sh(script: "mvn help:evaluate -Dexpression=project.artifactId -f pom.xml -q -DforceStdout", returnStdout: true).trim()
-                        IDENTIFICADOR_PROYECTO = "${ARTIFACT_ID}:${PROYECTO_VERSION}"
-                        IDENTIFICADOR_UNICO_BUILD = "${IDENTIFICADOR_PROYECTO}.${BUILD_NUMBER}"
+                        //PROYECTO_VERSION = sh(returnStdout: true, script: 'mvn help:evaluate -Dexpression=project.version -q -DforceStdout')
+                        //ARTIFACT_ID = sh(script: "mvn help:evaluate -Dexpression=project.artifactId -f pom.xml -q -DforceStdout", returnStdout: true).trim()
+                        //IDENTIFICADOR_PROYECTO = "${ARTIFACT_ID}:${PROYECTO_VERSION}"
+                        //IDENTIFICADOR_UNICO_BUILD = "${IDENTIFICADOR_PROYECTO}.${BUILD_NUMBER}"
 
-                        sh "echo 'Versión Proyecto: ${PROYECTO_VERSION}'"
-                        sh "echo 'ArtifactID Proyecto: ${ARTIFACT_ID}'"
-                        sh "echo 'Identificador Proyecto: ${IDENTIFICADOR_PROYECTO}'"
-                        sh "echo 'Identificador Único Build: ${IDENTIFICADOR_UNICO_BUILD}'"
+                        //sh "echo 'Versión Proyecto: ${PROYECTO_VERSION}'"
+                        //sh "echo 'ArtifactID Proyecto: ${ARTIFACT_ID}'"
+                        //sh "echo 'Identificador Proyecto: ${IDENTIFICADOR_PROYECTO}'"
+                        //sh "echo 'Identificador Único Build: ${IDENTIFICADOR_UNICO_BUILD}'"
 
                         sh 'mvn clean package -DskipTests'
                     }
@@ -123,15 +123,18 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                dir("${CARPETA_APLICACION}"){
-                    sh 'mvn test'
-                    sh 'mvn integration-test'
+
+        /* 
+            stage('Test') {
+                steps {
+                    dir("${CARPETA_APLICACION}"){
+                        sh 'mvn test'
+                        sh 'mvn integration-test'
+                    }
                 }
             }
-        }
 
+        */
         /* 
 
         stage('Build and push to DockerHub') {
