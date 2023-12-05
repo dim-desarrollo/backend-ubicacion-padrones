@@ -189,7 +189,7 @@ agent any
 
                     sh "docker build -t ${IDENTIFICADOR_IMAGEN} ."
 
-                    sh "docker run -d -p ${PUERTO_EXTERNO}:${PUERTO_INTERNO} --name ${NOMBRE_CONTENEDOR} ${IDENTIFICADOR_IMAGEN}"
+                    sh "docker run --network estaciones_my-network-padron-localizacion -d -p ${PUERTO_EXTERNO}:${PUERTO_INTERNO} --name ${NOMBRE_CONTENEDOR} ${IDENTIFICADOR_IMAGEN}"
 
 
 
