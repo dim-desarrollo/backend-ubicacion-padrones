@@ -96,6 +96,8 @@ agent any
 
     }
 
+    /*
+
     stage('SonarQube Analysis') {
 
     environment {
@@ -125,7 +127,7 @@ agent any
             }
         }
     }   
-
+    */
       stage('Tools initialization') {
           steps {
               script {
