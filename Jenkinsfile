@@ -64,28 +64,6 @@ pipeline {
         CARPETA_APLICACION = 'monolito'
         CARPETA_DESPLIEGUE = 'despliegue'
 
-        //DESPLIEGUE NUEVO
-
-        HORA_DESPLIEGUE = sh(returnStdout: true, script: "date '+%A %W %Y %X'").trim()
-
-        GITHUB_MONOLITO_URL = "https://github.com/dim-desarrollo/front-ubicacion-padrones.git"
-
-        GITHUB_CREDENCIALES = "github-test-1"
-        GITHUB_CREDENCIALES_DEPLOY = "dim-desarrollo"
-
-        SONARQUBE_CREDENCIALES = 'sonarqube'
-        PUERTO_EXTERNO = 4002
-
-        IDENTIFICADOR_UNICO_BUILD = 'backend-ubicacion-padrones' //agregado a mano, ver si se hace de otra manera
-        IDENTIFICADOR_IMAGEN = 'backend-ubicacion-padrones'
-
-        CANAL_SLACK = "#canal-slack"            // TODO: Por reemplazar
-        CORREO_A_NOTIFICAR = "dim@gmail.com"    // TODO: Por reemplazar
-
-        CARPETA_APLICACION = './'
-        //CARPETA_DESPLIEGUE = 'despliegue'
-
-
     }
 
     stages {
