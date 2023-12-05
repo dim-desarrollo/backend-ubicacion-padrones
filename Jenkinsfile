@@ -62,18 +62,19 @@ agent any
 
    stages {
 
+/*
 
     stage('Message start deploy') {
 
         steps {
 
-            discordSend description: "Inicio de deploy!!!", footer: "Inicado", link: env.BUILD_URL, result: currentBuild.currentResult, title: "Deploy Ubicacion-Padron", webhookURL: "https://discord.com/api/webhooks/1173648912838561922/iB8YUryvKbcj66EWQa2e6161BDuygkfaMx57VUalxPnDAMvoRHcYKxJTaxV4nfBEdoxi"
+            discordSend description: "Inicio de deploy!!!", footer: "Inicado", link: env.BUILD_URL, result: currentBuild.currentResult, title: "Deploy BackEnd-Ubicacion-Padron", webhookURL: "https://discord.com/api/webhooks/1173648912838561922/iB8YUryvKbcj66EWQa2e6161BDuygkfaMx57VUalxPnDAMvoRHcYKxJTaxV4nfBEdoxi"
 
         }
 
     }
 
-
+*/
     stage('Iniciando variables') {
 
         steps {
