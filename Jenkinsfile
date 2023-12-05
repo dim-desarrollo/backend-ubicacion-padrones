@@ -74,7 +74,7 @@ pipeline {
                         RAMA_PARA_CLONAR = env.BRANCH_NAME
                     }
                     else{
-                        RAMA_PARA_CLONAR = 'develop'
+                        RAMA_PARA_CLONAR = 'Dev'
                     }
 
                     DOCKER_VERSION = sh(returnStdout: true, script: 'docker version')
