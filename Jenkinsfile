@@ -50,7 +50,7 @@ agent any
         DOCKERHUB_CREDENCIALES = "dockerhub"
         KUBERNETES_CREDENCIALES = "k8s-jenkins-account-15"
         SONARQUBE_CREDENCIALES = 'sonarqube'
-        PUERTO_EXTERNO = 4040
+        PUERTO_EXTERNO = 4000
 
         CANAL_SLACK = "#canal-slack"            // TODO: Por reemplazar
         CORREO_A_NOTIFICAR = "dim@gmail.com"    // TODO: Por reemplazar
@@ -173,7 +173,7 @@ agent any
      stage('Build and run') {
 
         environment{
-             PUERTO_INTERNO = 80
+             PUERTO_INTERNO = 4040
              NOMBRE_CONTENEDOR = "backend-padron-ubicacion"
              IDENTIFICADOR_IMAGEN = "backend-padron-ubicacion"
          }
