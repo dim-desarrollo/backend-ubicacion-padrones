@@ -169,11 +169,12 @@ agent any
          
       
 
-     stage('Build and push to DockerHub') {
+     stage('Build and run') {
 
         environment{
              PUERTO_INTERNO = 80
-             NOMBRE_CONTENEDOR = "front-ubicacion-padrones"
+             NOMBRE_CONTENEDOR = "backEnd-padron-ubicacion"
+             IDENTIFICADOR_IMAGEN = "backEnd-padron-ubicacion"
          }
           
         steps {
