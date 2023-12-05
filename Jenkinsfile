@@ -41,7 +41,7 @@ pipeline {
     tools {
 
         maven "maven3.8.8"
-        jdk 'java20'
+        jdk 'java17' //cambiar
         dockerTool 'docker-2'
     //    nodejs 'node-js'
     
@@ -61,8 +61,8 @@ pipeline {
         CANAL_SLACK = "#canal-slack"            // TODO: Por reemplazar
         CORREO_A_NOTIFICAR = "dim@gmail.com"    // TODO: Por reemplazar
 
-        CARPETA_APLICACION = 'monolito'
-        CARPETA_DESPLIEGUE = 'despliegue'
+        CARPETA_APLICACION = './'
+        //CARPETA_DESPLIEGUE = 'despliegue'
 
     }
 
