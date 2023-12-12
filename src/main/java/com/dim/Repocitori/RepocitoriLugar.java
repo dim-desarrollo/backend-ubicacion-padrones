@@ -16,7 +16,25 @@ public interface RepocitoriLugar extends JpaRepository<Lugares, Long>{
 //        @Query(value = "SELECT * FROM lugares WHERE ST_DWithin(ST_GeographyFromText('POINT(?1 ?2)'), 100)", nativeQuery = true)
 //        Collection<Lugares> buscarLugaresPorLatitudLongitud(double latitud,double longitud );
 
-    @Query(value = "SELECT id,nombres,latitud,longitud,id_padron from obtener_lugares_cercanos(:latitud, :longitud)", nativeQuery = true)
+
+    /*
+            (
+            id          bigint,
+            nombres     varchar(255),
+            latitud     double precision,
+            longitud    double precision,
+            id_padrones bigint,
+            modificado  boolean,
+            padron      integer,
+            svg         text,
+            deuda       bigint
+        )
+
+     */
+
+    //@Query(value = "SELECT id,nombres,latitud,longitud,id_padrones,modificado,padron,svg,deuda from obtener_lugares_cercanos(:latitud, :longitud)", nativeQuery = true)
+
+    @Query(value = "SELECT * from obtener_lugares_cercanos2(:latitud, :longitud)", nativeQuery = true)
     List<Lugares> findByDistance(@Param("latitud") float latitud,@Param("longitud") float longitud);
 }
 
@@ -54,5 +72,57 @@ public interface RepocitoriLugar extends JpaRepository<Lugares, Long>{
 
 #009929 verde
 
+
+ */
+
+
+/*
+
+drop function if exists obtener_lugares_cercanos2(latitud_param double precision, longitud_param double precision);
+
+CREATE OR REPLACE FUNCTION obtener_lugares_cercanos2(latitud_param DOUBLE PRECISION, longitud_param DOUBLE PRECISION)
+RETURNS table
+        (
+            id          bigint,
+            nombres     varchar(255),
+            latitud     double precision,
+            longitud    double precision,
+            id_padrones bigint,
+            modificado  boolean,
+            padron      integer,
+            svg         text,
+            deuda       bigint
+        )
+AS
+$$
+DECLARE
+    latitud_str  text;
+    longitud_str text;
+    consulta     text;
+BEGIN
+    latitud_str = latitud_param::text;
+    longitud_str = longitud_param::text;
+    consulta = concat('POINT(', latitud_str, ' ', longitud_str, ')');
+
+    RAISE NOTICE 'Consulta: %', consulta;
+
+    RETURN QUERY
+        SELECT l.id,
+               l.nombres,
+               ST_Y(ubicacion::geometry) AS latitud,
+               ST_X(ubicacion::geometry) AS longitud,
+               l.id_padron,
+               p.modificado,
+               p.padron,
+               p.svg,
+               p.deuda
+        FROM lugares l
+        JOIN padrones p ON l.id_padron = p.id_padrones
+        WHERE ST_DWithin(l.ubicacion, ST_GeographyFromText(consulta), 100000);
+END;
+$$
+LANGUAGE 'plpgsql';
+
+SELECT * FROM obtener_lugares_cercanos2(-26.8315037860992, -65.20242462987045);
 
  */
